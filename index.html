@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Converter EUR/PLN</title>
+        <title>Artiucles</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     </head>
     <body>
-        <h1>DZIAŁA</h1>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar__content container-fluid">
+                <div class="navbar__logo navbar-header hidden-xs">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </div>
+                <span class="navbar__title">Articules</span>
+                <form class="navbar__form form-inline">
+                    <div class="form-group">
+                        <label for="email">From:</label>
+                        <input class="navrab__input form-control" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">To:</label>
+                        <input class="navrab__input form-control" type="date">
+                    </div>
+                    <button class="navrab__formBtn btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="content__sortDiv">
+                <button class="content__sortBtn btn" type="button">
+                    SORT <i class="arrowIcon fa fa-arrow-up" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
