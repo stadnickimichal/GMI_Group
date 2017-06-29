@@ -6,3 +6,6 @@ sortowania artyku³ów po datach rosn¹co lub malej¹co. W górnym menu znajduje siê 
 którego podaje daty (pocz¹tkow¹ i koñcow¹), po naciœni¹ciu przycisku "SERCH" pobierane s¹ 
 artyku³u dla zadanego zakresu dat. Pliki .JSON zawieraj¹ maksymalnie 10 artyku³ów (jest to 
 zawsze 10 najnowszych dla danego zakresu dat).
+
+link do strony:
+https://stadnickimichal.github.io/GMI_Group/
