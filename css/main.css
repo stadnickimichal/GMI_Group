@@ -69,3 +69,12 @@ a:hover{
 .articule__articuleText{
     text-align: justify;
 }
+footer{
+    margin: 0 auto;
+    text-align: center;
+    width: 800px;
+}
+.footer__hr{
+    width: 100%;
+    border-color: rgb(221, 221, 221);
+}
