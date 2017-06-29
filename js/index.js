@@ -6,17 +6,18 @@ class main{
         this.sortBtn= $(".content__sortBtn");
         this.input=$(".navrab__input");
         this.formBtn=$(".navrab__formBtn");
+        this.articules;/*Tablica do przechowywania wszystkich artykolow ze strony*/
         this.sortBtn.bind('click',()=>this.sortFunction());
         this.formBtn.bind('click',()=>this.loadArtiuclesAccordingToDate( event ));
-        this.result;
+        this.result; /*wynik pobrania pliku JSON*/
         this.articulesCreated=false;
-        this.articules;
         this.sorted=false;
         this.url= "https://api.nytimes.com/svc/search/v2/articlesearch.json";
         this.url+= '?' + $.param({
             'api-key': "1f9d306396d1485a90d2ab6efe21e5ea",
         });
     }
+    /*funkcja pobierajaca artykuly*/
     uploadArticules(){
         $.ajax({
             url: this.url,
@@ -29,6 +30,7 @@ class main{
             throw err;
         });
     }
+    /*Odswierzanie zawartosci diva z artykulami (w przypadku pobrania nowych artykolow albo ich posortowania)*/
     refreshContent(){
         let doc=this.result.response.docs;
         for(let i=0 ; i<doc.length ; i++){
@@ -37,12 +39,14 @@ class main{
             $(this.articules[i]).html(html);
         }
     }
+    /*Wstawia tekst do artykolu*/
     insertArticuleText(text,title,date){
         let html=       "<p class='articule__date'>"+date+"</p>";        
         html+=          "<h2 class='articule__title'>"+title+"</h2>";
         html+=          "<p class='articule__articuleText'>"+text+"</p>";
         return html;
     }
+    /*Tworzy tyle artykolow ile zostalo porabych*/
     createArticule(){
         let doc=this.result.response.docs;
         for(let i=0 ; i<doc.length ; i++){
@@ -51,12 +55,13 @@ class main{
         this.articules=$(".articule");
         this.articulesCreated=true;
     }
-    sortFunction(){//funkcja sortujaca artykuly
+    /*funkcja sortujaca artykuly po datach*/
+    sortFunction(){
         this.arrowRotation();
-        if(this.sorted){//odwracanie posortowanych artykolow
+        if(this.sorted){
             this.result.response.docs.reverse();
         }
-        else{//sortowanie artykolow wedlog daty
+        else{
             let doc=this.result.response.docs;
             for (var j=0 ; j<doc.length-1 ; j++){
                 for(var i=0 ; i<doc.length-1 ; i++){
@@ -71,6 +76,7 @@ class main{
         }
         this.refreshContent();
     }
+    /*Funkcja pobiera artykoly zgodnie z podanymi przez urzytkownika datami*/
     loadArtiuclesAccordingToDate(event){
         event.preventDefault();
         let begDate=this.prepareDateForURL(this.input[0].value);
@@ -83,14 +89,17 @@ class main{
         });
         ((begDate!="")&&(endDate!=""))?this.uploadArticules():'';
     }
-    arrowRotation(){//obrot ikonki szczalki na przycisku sortowania
+    /*Obracanie starzalki po nacisnieciu przycisku sortowania*/
+    arrowRotation(){
         let className =(this.arrowIcon.attr("class")=="arrowIcon fa fa-arrow-down")?"arrowIcon fa fa-arrow-up":"arrowIcon fa fa-arrow-down";
         this.arrowIcon.removeClass();
         this.arrowIcon.addClass(className);
     }
+    /*Przygotowywanie daty do wyswietlenia przy artykule*/
     prepareDateForArtiucles(date){
         return date.substr(0,19).split('T').join(" ");
     }
+    /*Przygotowywanie daty do wyslania z zapytaniem XML*/
     prepareDateForURL(date){
         return date.split('-').join('');
     }
