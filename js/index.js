@@ -6,7 +6,7 @@ class main{
         this.sortBtn= $(".content__sortBtn");
         this.input=$(".navrab__input");
         this.formBtn=$(".navrab__formBtn");
-        this.articules;/*Tablica do przechowywania wszystkich artykolow ze strony*/
+        this.articules;/*Tablica do przechowywania wszystkich artykulow ze strony*/
         this.sortBtn.bind('click',()=>this.sortFunction());
         this.formBtn.bind('click',()=>this.loadArtiuclesAccordingToDate( event ));
         this.result; /*wynik pobrania pliku JSON*/
@@ -30,7 +30,7 @@ class main{
             throw err;
         });
     }
-    /*Odswierzanie zawartosci diva z artykulami (w przypadku pobrania nowych artykolow albo ich posortowania)*/
+    /*Odswierzanie zawartosci diva z artykulami (w przypadku pobrania nowych artykulow albo ich posortowania)*/
     refreshContent(){
         let doc=this.result.response.docs;
         for(let i=0 ; i<doc.length ; i++){
@@ -39,14 +39,14 @@ class main{
             $(this.articules[i]).html(html);
         }
     }
-    /*Wstawia tekst do artykolu*/
+    /*Wstawia tekst do artykulu*/
     insertArticuleText(text,title,date){
         let html=       "<p class='articule__date'>"+date+"</p>";        
         html+=          "<h2 class='articule__title'>"+title+"</h2>";
         html+=          "<p class='articule__articuleText'>"+text+"</p>";
         return html;
     }
-    /*Tworzy tyle artykolow ile zostalo porabych*/
+    /*Tworzy tyle pustych artykulow ile zostalo porabych*/
     createArticule(){
         let doc=this.result.response.docs;
         for(let i=0 ; i<doc.length ; i++){
@@ -76,7 +76,7 @@ class main{
         }
         this.refreshContent();
     }
-    /*Funkcja pobiera artykoly zgodnie z podanymi przez urzytkownika datami*/
+    /*Funkcja pobiera artykuly zgodnie z podanymi przez urzytkownika datami*/
     loadArtiuclesAccordingToDate(event){
         event.preventDefault();
         let begDate=this.prepareDateForURL(this.input[0].value);
